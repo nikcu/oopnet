@@ -1,6 +1,6 @@
 ﻿namespace Utils
 {
-    public class TranslationOption
+    public class ComboBoxItem
     {
         public required string Label { get; set; }
         public required string Value { get; set; }

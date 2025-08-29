@@ -63,45 +63,72 @@ namespace Utils {
         /// <summary>
         ///   Looks up a localized string similar to Championship.
         /// </summary>
-        public static string labelChampionshipText {
+        public static string StringChampionship {
             get {
-                return ResourceManager.GetString("labelChampionshipText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Language.
-        /// </summary>
-        public static string labelLanguageText {
-            get {
-                return ResourceManager.GetString("labelLanguageText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        public static string SettingsFormText {
-            get {
-                return ResourceManager.GetString("SettingsFormText", resourceCulture);
+                return ResourceManager.GetString("StringChampionship", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Croatian (Hrvatski).
         /// </summary>
-        public static string stringCroatian {
+        public static string StringLangCroatian {
             get {
-                return ResourceManager.GetString("stringCroatian", resourceCulture);
+                return ResourceManager.GetString("StringLangCroatian", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to English (Engleski).
         /// </summary>
-        public static string stringEnglish {
+        public static string StringLangEnglish {
             get {
-                return ResourceManager.GetString("stringEnglish", resourceCulture);
+                return ResourceManager.GetString("StringLangEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string StringLanguage {
+            get {
+                return ResourceManager.GetString("StringLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Men&apos;s.
+        /// </summary>
+        public static string StringMens {
+            get {
+                return ResourceManager.GetString("StringMens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string StringSave {
+            get {
+                return ResourceManager.GetString("StringSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string StringSettings {
+            get {
+                return ResourceManager.GetString("StringSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Women&apos;s.
+        /// </summary>
+        public static string StringWomens {
+            get {
+                return ResourceManager.GetString("StringWomens", resourceCulture);
             }
         }
     }

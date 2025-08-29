@@ -117,19 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="stringCroatian" xml:space="preserve">
+  <data name="StringLangCroatian" xml:space="preserve">
     <value>Croatian (Hrvatski)</value>
   </data>
-  <data name="stringEnglish" xml:space="preserve">
+  <data name="StringLangEnglish" xml:space="preserve">
     <value>English (Engleski)</value>
   </data>
-  <data name="labelLanguageText" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="SettingsFormText" xml:space="preserve">
+  <data name="StringSettings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="labelChampionshipText" xml:space="preserve">
+  <data name="StringChampionship" xml:space="preserve">
     <value>Championship</value>
+  </data>
+  <data name="StringWomens" xml:space="preserve">
+    <value>Women's</value>
+  </data>
+  <data name="StringMens" xml:space="preserve">
+    <value>Men's</value>
+  </data>
+  <data name="StringSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="StringLanguage" xml:space="preserve">
+    <value>Language</value>
   </data>
 </root>

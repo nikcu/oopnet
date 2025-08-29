@@ -14,28 +14,27 @@ namespace WindowsForms
 
         private void SettingsFormAfterInit()
         {
-            Text = Translations.SettingsFormText;
-            labelLanguage.Text = Translations.labelLanguageText;
-            labelChampionship.Text = Translations.labelChampionshipText;
+            Text = Translations.StringSettings;
+            labelLanguage.Text = Translations.StringLanguage;
+            labelChampionship.Text = Translations.StringChampionship;
+            buttonSave.Text = Translations.StringSave;
             ComboBoxLanguageInit();
+            ComboBoxChampionshipInit();
         }
 
         private void ComboBoxLanguageInit()
         {
-            TranslationOption[] translationOptions = [
-                new TranslationOption { Label = Translations.stringCroatian, Value = "hr" },
-                new TranslationOption { Label = Translations.stringEnglish, Value = "en" },
-            ];
-
-
             comboBoxLanguage.Items.Clear();
-            comboBoxLanguage.Items.AddRange(translationOptions);
-            comboBoxLanguage.DisplayMember = TranslationOption.DisplayMember;
-            comboBoxLanguage.ValueMember = TranslationOption.ValueMember;
+            comboBoxLanguage.Items.AddRange([
+                new ComboBoxItem { Label = Translations.StringLangCroatian, Value = "hr" },
+                new ComboBoxItem { Label = Translations.StringLangEnglish, Value = "en" },
+            ]);
+            comboBoxLanguage.DisplayMember = ComboBoxItem.DisplayMember;
+            comboBoxLanguage.ValueMember = ComboBoxItem.ValueMember;
 
             for (int i = 0; i < comboBoxLanguage.Items.Count; i++)
             {
-                if (comboBoxLanguage.Items[i] is not TranslationOption option)
+                if (comboBoxLanguage.Items[i] is not ComboBoxItem option)
                 {
                     continue;
                 }
@@ -50,16 +49,29 @@ namespace WindowsForms
             comboBoxLanguage.SelectedIndex = 0;
         }
 
+        private void ComboBoxChampionshipInit()
+        {
+            comboBoxChampionship.Items.Clear();
+            comboBoxChampionship.Items.AddRange([
+                new ComboBoxItem { Label = Translations.StringWomens, Value = "F" },
+                new ComboBoxItem { Label = Translations.StringMens, Value = "M" },
+            ]);
+            comboBoxChampionship.DisplayMember = ComboBoxItem.DisplayMember;
+            comboBoxChampionship.ValueMember = ComboBoxItem.ValueMember;
+
+            comboBoxChampionship.SelectedIndex = 0;
+        }
+
         private void ComboBoxLanguage_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ComboBox comboBoxLanguage = (ComboBox)sender;
 
-            if (comboBoxLanguage.SelectedItem is not TranslationOption selectedOption)
+            if (comboBoxLanguage.SelectedItem is not ComboBoxItem selectedItem)
             {
                 return;
             }
 
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(selectedOption.Value);
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(selectedItem.Value);
             SettingsFormAfterInit();
         }
     }
