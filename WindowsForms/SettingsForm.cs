@@ -6,5 +6,11 @@ namespace WindowsForms
         {
             InitializeComponent();
         }
+
+        public void SettingsForm_Load(object sender, EventArgs e)
+        {
+            comboBoxLanguage.Items.AddRange(new object[] { "English", "Croatian" });
+            comboBoxChampionship.Items.AddRange(new object[] { "Women", "Men" });
+        }
     }
 }
