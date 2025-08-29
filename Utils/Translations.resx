@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Postavke</value>
+  <data name="stringCroatian" xml:space="preserve">
+    <value>Croatian (Hrvatski)</value>
+  </data>
+  <data name="stringEnglish" xml:space="preserve">
+    <value>English (Engleski)</value>
+  </data>
+  <data name="labelLanguageText" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsFormText" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="labelChampionshipText" xml:space="preserve">
+    <value>Championship</value>
   </data>
 </root>

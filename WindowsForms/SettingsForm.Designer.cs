@@ -1,4 +1,6 @@
-﻿namespace WindowsForms
+﻿using Utils;
+
+namespace WindowsForms
 {
     partial class SettingsForm
     {
@@ -48,8 +50,8 @@
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel1.Controls.Add(tableLayoutPanel1);
             flowLayoutPanel1.Controls.Add(tableLayoutPanel2);
+            flowLayoutPanel1.Controls.Add(tableLayoutPanel1);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(292, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -64,7 +66,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(labelChampionship, 0, 0);
             tableLayoutPanel1.Controls.Add(comboBoxChampionship, 1, 0);
-            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Location = new Point(0, 29);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
@@ -79,9 +81,8 @@
             labelChampionship.AutoSize = true;
             labelChampionship.Location = new Point(3, 7);
             labelChampionship.Name = "labelChampionship";
-            labelChampionship.Size = new Size(85, 15);
+            labelChampionship.Size = new Size(0, 15);
             labelChampionship.TabIndex = 0;
-            labelChampionship.Text = "Championship";
             // 
             // comboBoxChampionship
             // 
@@ -99,7 +100,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(labelLanguage, 0, 0);
             tableLayoutPanel2.Controls.Add(comboBoxLanguage, 1, 0);
-            tableLayoutPanel2.Location = new Point(0, 29);
+            tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
@@ -113,9 +114,8 @@
             labelLanguage.AutoSize = true;
             labelLanguage.Location = new Point(3, 7);
             labelLanguage.Name = "labelLanguage";
-            labelLanguage.Size = new Size(59, 15);
+            labelLanguage.Size = new Size(0, 15);
             labelLanguage.TabIndex = 0;
-            labelLanguage.Text = "Language";
             // 
             // comboBoxLanguage
             // 
@@ -124,6 +124,7 @@
             comboBoxLanguage.Name = "comboBoxLanguage";
             comboBoxLanguage.Size = new Size(121, 23);
             comboBoxLanguage.TabIndex = 1;
+            comboBoxLanguage.SelectionChangeCommitted += ComboBoxLanguage_SelectionChangeCommitted;
             // 
             // tableLayoutPanel3
             // 
@@ -147,8 +148,6 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(480, 320);
             Name = "SettingsForm";
-            Text = "Settings";
-            Load += SettingsForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
