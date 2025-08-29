@@ -39,7 +39,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(480, 320);
             Name = "SettingsForm";
-            Text = "Form1";
+            Text = "Settings";
             ResumeLayout(false);
         }
 
