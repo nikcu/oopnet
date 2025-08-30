@@ -82,7 +82,7 @@ namespace WindowsForms
             labelLanguage.AutoSize = true;
             labelLanguage.Location = new Point(3, 7);
             labelLanguage.Name = "labelLanguage";
-            labelLanguage.Size = new Size(65, 15);
+            labelLanguage.Size = new Size(84, 15);
             labelLanguage.TabIndex = 0;
             labelLanguage.Text = "labelLanguage";
             // 
@@ -129,6 +129,7 @@ namespace WindowsForms
             comboBoxChampionship.Name = "comboBoxChampionship";
             comboBoxChampionship.Size = new Size(121, 23);
             comboBoxChampionship.TabIndex = 1;
+            comboBoxChampionship.SelectionChangeCommitted += comboBoxChampionship_SelectionChangeCommitted;
             // 
             // buttonSave
             // 
@@ -140,6 +141,7 @@ namespace WindowsForms
             buttonSave.TabIndex = 2;
             buttonSave.Text = "buttonSave";
             buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
             // 
             // tableLayoutPanel3
             // 

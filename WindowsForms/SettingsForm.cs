@@ -1,6 +1,7 @@
 using System.CodeDom.Compiler;
 using System.Globalization;
 using Utils;
+using DataLayer;
 
 namespace WindowsForms
 {
@@ -24,55 +25,90 @@ namespace WindowsForms
 
         private void ComboBoxLanguageInit()
         {
-            comboBoxLanguage.Items.Clear();
-            comboBoxLanguage.Items.AddRange([
+            ComboBox thisBox = comboBoxLanguage;
+
+            thisBox.Items.Clear();
+            thisBox.Items.AddRange([
                 new ComboBoxItem { Label = Translations.StringLangCroatian, Value = "hr" },
                 new ComboBoxItem { Label = Translations.StringLangEnglish, Value = "en" },
             ]);
-            comboBoxLanguage.DisplayMember = ComboBoxItem.DisplayMember;
-            comboBoxLanguage.ValueMember = ComboBoxItem.ValueMember;
+            thisBox.DisplayMember = ComboBoxItem.DisplayMember;
+            thisBox.ValueMember = ComboBoxItem.ValueMember;
 
-            for (int i = 0; i < comboBoxLanguage.Items.Count; i++)
+            for (int i = 0; i < thisBox.Items.Count; i++)
             {
-                if (comboBoxLanguage.Items[i] is not ComboBoxItem option)
+                if (thisBox.Items[i] is not ComboBoxItem option)
                 {
                     continue;
                 }
 
                 if (option.Value == Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName)
                 {
-                    comboBoxLanguage.SelectedIndex = i;
+                    thisBox.SelectedIndex = i;
                     return;
                 }
             }
 
-            comboBoxLanguage.SelectedIndex = 0;
+            thisBox.SelectedIndex = 0;
         }
 
         private void ComboBoxChampionshipInit()
         {
-            comboBoxChampionship.Items.Clear();
-            comboBoxChampionship.Items.AddRange([
-                new ComboBoxItem { Label = Translations.StringWomens, Value = "F" },
-                new ComboBoxItem { Label = Translations.StringMens, Value = "M" },
-            ]);
-            comboBoxChampionship.DisplayMember = ComboBoxItem.DisplayMember;
-            comboBoxChampionship.ValueMember = ComboBoxItem.ValueMember;
+            ComboBox thisBox = comboBoxChampionship;
 
-            comboBoxChampionship.SelectedIndex = 0;
+            thisBox.Items.Clear();
+            thisBox.Items.AddRange([
+                new ComboBoxItem { Label = Translations.StringWomens, Value = "f" },
+                new ComboBoxItem { Label = Translations.StringMens, Value = "m" },
+            ]);
+            thisBox.DisplayMember = ComboBoxItem.DisplayMember;
+            thisBox.ValueMember = ComboBoxItem.ValueMember;
+
+            for (int i = 0; i < thisBox.Items.Count; i++)
+            {
+                if (thisBox.Items[i] is not ComboBoxItem option)
+                {
+                    continue;
+                }
+
+                if (option.Value == Settings.Instance.SelectedChampionship)
+                {
+                    thisBox.SelectedIndex = i;
+                    return;
+                }
+            }
+
+            thisBox.SelectedIndex = 0;
         }
 
         private void ComboBoxLanguage_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            ComboBox comboBoxLanguage = (ComboBox)sender;
+            ComboBox thisBox = (ComboBox)sender;
 
-            if (comboBoxLanguage.SelectedItem is not ComboBoxItem selectedItem)
+            if (thisBox.SelectedItem is not ComboBoxItem selectedItem)
             {
                 return;
             }
 
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(selectedItem.Value);
             SettingsFormAfterInit();
+        }
+
+        private void comboBoxChampionship_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ComboBox thisBox = (ComboBox)sender;
+
+            if (thisBox.SelectedItem is not ComboBoxItem selectedItem)
+            {
+                return;
+            }
+
+            Settings.Instance.SelectedChampionship = selectedItem.Value;
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            Settings.Instance.SaveSettings();
         }
     }
 }
