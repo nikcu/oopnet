@@ -1,18 +1,10 @@
+using DataLayer.Interfaces;
 using DataLayer.Models;
 
 namespace DataLayer.Services
 {
-    /// <summary>
-    /// Service for calculating player and match rankings.
-    /// Extracts business logic from RankingsForm for better separation of concerns.
-    /// </summary>
-    public class RankingsService
+    public class RankingsService : IRankingsService
     {
-        /// <summary>
-        /// Gets goal scorers aggregated from match events
-        /// </summary>
-        /// <param name="matches">List of matches to process</param>
-        /// <returns>List of player stats sorted by goals (descending)</returns>
         public List<PlayerStat> GetGoalScorers(List<Match> matches)
         {
             var goalScorers = new Dictionary<string, int>();
@@ -30,11 +22,6 @@ namespace DataLayer.Services
                 .ToList();
         }
 
-        /// <summary>
-        /// Gets yellow card recipients aggregated from match events
-        /// </summary>
-        /// <param name="matches">List of matches to process</param>
-        /// <returns>List of player stats sorted by yellow cards (descending)</returns>
         public List<PlayerStat> GetYellowCardRecipients(List<Match> matches)
         {
             var yellowCards = new Dictionary<string, int>();
@@ -52,11 +39,6 @@ namespace DataLayer.Services
                 .ToList();
         }
 
-        /// <summary>
-        /// Gets match attendance records sorted by attendance (descending)
-        /// </summary>
-        /// <param name="matches">List of matches to process</param>
-        /// <returns>List of attendance records</returns>
         public List<AttendanceRecord> GetAttendanceRanking(List<Match> matches)
         {
             return matches
@@ -73,11 +55,6 @@ namespace DataLayer.Services
                 .ToList();
         }
 
-        /// <summary>
-        /// Builds a lookup dictionary of players from match lineups
-        /// </summary>
-        /// <param name="matches">List of matches to process</param>
-        /// <returns>Dictionary mapping player names to Player objects</returns>
         public Dictionary<string, Player> BuildPlayerLookup(List<Match> matches)
         {
             var playerLookup = new Dictionary<string, Player>(StringComparer.OrdinalIgnoreCase);
@@ -92,8 +69,6 @@ namespace DataLayer.Services
 
             return playerLookup;
         }
-
-        #region Private Helpers
 
         private static void ProcessGoalEvents(List<MatchEvent>? events, Dictionary<string, int> goalScorers)
         {
@@ -146,9 +121,7 @@ namespace DataLayer.Services
             if (string.IsNullOrEmpty(attendance))
                 return 0;
 
-            // Remove any non-numeric characters except digits
             string cleanedValue = new string(attendance.Where(char.IsDigit).ToArray());
-
             return int.TryParse(cleanedValue, out int result) ? result : 0;
         }
 
@@ -164,7 +137,5 @@ namespace DataLayer.Services
                 }
             }
         }
-
-        #endregion
     }
 }

@@ -428,5 +428,284 @@ namespace Utils {
                 return ResourceManager.GetString("StringPrintExport", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string StringError {
+            get {
+                return ResourceManager.GetString("StringError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string StringSuccess {
+            get {
+                return ResourceManager.GetString("StringSuccess", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string StringWarning {
+            get {
+                return ResourceManager.GetString("StringWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string StringConfirm {
+            get {
+                return ResourceManager.GetString("StringConfirm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string StringCancel {
+            get {
+                return ResourceManager.GetString("StringCancel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string StringYes {
+            get {
+                return ResourceManager.GetString("StringYes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string StringNo {
+            get {
+                return ResourceManager.GetString("StringNo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No teams available.
+        /// </summary>
+        public static string StringNoTeamsAvailable {
+            get {
+                return ResourceManager.GetString("StringNoTeamsAvailable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load teams. Check your connection..
+        /// </summary>
+        public static string StringErrorLoadingTeams {
+            get {
+                return ResourceManager.GetString("StringErrorLoadingTeams", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings saved..
+        /// </summary>
+        public static string StringSettingsSaved {
+            get {
+                return ResourceManager.GetString("StringSettingsSaved", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to save settings..
+        /// </summary>
+        public static string StringErrorSavingSettings {
+            get {
+                return ResourceManager.GetString("StringErrorSavingSettings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No favourite team selected..
+        /// </summary>
+        public static string StringNoFavouriteTeam {
+            get {
+                return ResourceManager.GetString("StringNoFavouriteTeam", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select a favourite team first..
+        /// </summary>
+        public static string StringSelectFavouriteTeamFirst {
+            get {
+                return ResourceManager.GetString("StringSelectFavouriteTeamFirst", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Continue?.
+        /// </summary>
+        public static string StringContinueQuestion {
+            get {
+                return ResourceManager.GetString("StringContinueQuestion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Image assigned..
+        /// </summary>
+        public static string StringImageAssigned {
+            get {
+                return ResourceManager.GetString("StringImageAssigned", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Image removed..
+        /// </summary>
+        public static string StringImageRemoved {
+            get {
+                return ResourceManager.GetString("StringImageRemoved", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load image..
+        /// </summary>
+        public static string StringErrorLoadingImage {
+            get {
+                return ResourceManager.GetString("StringErrorLoadingImage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No matches found..
+        /// </summary>
+        public static string StringNoMatchesFound {
+            get {
+                return ResourceManager.GetString("StringNoMatchesFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load data..
+        /// </summary>
+        public static string StringErrorLoadingData {
+            get {
+                return ResourceManager.GetString("StringErrorLoadingData", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Favourites saved..
+        /// </summary>
+        public static string StringFavouritesSaved {
+            get {
+                return ResourceManager.GetString("StringFavouritesSaved", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to You have unsaved changes. Save before closing?.
+        /// </summary>
+        public static string StringUnsavedChanges {
+            get {
+                return ResourceManager.GetString("StringUnsavedChanges", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Remove this item?.
+        /// </summary>
+        public static string StringRemoveConfirmation {
+            get {
+                return ResourceManager.GetString("StringRemoveConfirmation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Display Mode.
+        /// </summary>
+        public static string StringDisplayMode {
+            get {
+                return ResourceManager.GetString("StringDisplayMode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Resolution.
+        /// </summary>
+        public static string StringResolution {
+            get {
+                return ResourceManager.GetString("StringResolution", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Fullscreen.
+        /// </summary>
+        public static string StringFullscreen {
+            get {
+                return ResourceManager.GetString("StringFullscreen", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Windowed.
+        /// </summary>
+        public static string StringWindowed {
+            get {
+                return ResourceManager.GetString("StringWindowed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Opponent.
+        /// </summary>
+        public static string StringOpponent {
+            get {
+                return ResourceManager.GetString("StringOpponent", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Player not found. Try using Browse Image..
+        /// </summary>
+        public static string StringPlayerNotFound {
+            get {
+                return ResourceManager.GetString("StringPlayerNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No image available for this player..
+        /// </summary>
+        public static string StringNoImageAvailable {
+            get {
+                return ResourceManager.GetString("StringNoImageAvailable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Network error. Check your connection..
+        /// </summary>
+        public static string StringNetworkError {
+            get {
+                return ResourceManager.GetString("StringNetworkError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Request timed out. Try again later..
+        /// </summary>
+        public static string StringTimeoutError {
+            get {
+                return ResourceManager.GetString("StringTimeoutError", resourceCulture);
+            }
+        }
     }
 }

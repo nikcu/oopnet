@@ -9,7 +9,6 @@ namespace WindowsForms
 {
     public partial class FavoritePlayersForm : Form
     {
-        // Dependencies (using interfaces for DIP)
         private readonly IWorldCupRepository _repository;
         private readonly ISettingsService _settings;
 
@@ -19,22 +18,19 @@ namespace WindowsForms
         private List<PlayerUserControl> _selectedControls = new();
         private const int MaxFavourites = 3;
 
-        // Context menu
         private ContextMenuStrip _contextMenu = new();
         private ToolStripMenuItem _menuAddToFavourites = new();
         private ToolStripMenuItem _menuRemoveFromFavourites = new();
 
-        // Drag detection
         private Point _dragStartPoint;
         private bool _isDragging;
         private PlayerUserControl? _dragSourceControl;
-        private const int DragThreshold = 5; // Pixels to move before drag starts
+        private const int DragThreshold = 5;
 
         public FavoritePlayersForm()
         {
             InitializeComponent();
 
-            // Initialize dependencies
             _repository = WorldCupRepository.Instance;
             _settings = Settings.Instance;
 
@@ -49,12 +45,11 @@ namespace WindowsForms
         {
             ApplyLocalization();
 
-            // Check if favourite team is selected
             if (string.IsNullOrEmpty(_favouriteTeamFifaCode))
             {
                 MessageBox.Show(
-                    "Please select a favourite team first in the Settings.",
-                    "No Favourite Team",
+                    Translations.StringSelectFavouriteTeamFirst,
+                    Translations.StringWarning,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
@@ -62,7 +57,6 @@ namespace WindowsForms
                 return;
             }
 
-            // Load players
             await LoadPlayersAsync();
         }
 
@@ -87,7 +81,6 @@ namespace WindowsForms
 
         private void SetupDragDrop()
         {
-            // Enable drag-drop for both panels
             panelFavourites.AllowDrop = true;
             panelOthers.AllowDrop = true;
 
@@ -107,15 +100,13 @@ namespace WindowsForms
                 labelStatus.Text = Translations.StringLoading;
                 labelStatus.Visible = true;
 
-                Console.WriteLine($"Loading players for team: {_favouriteTeamFifaCode}");
-
                 var matches = await _repository.GetCountryMatchesAsync(_championship, _favouriteTeamFifaCode!);
 
                 if (matches == null || matches.Count == 0)
                 {
                     MessageBox.Show(
-                        "No matches found for the selected team.",
-                        "No Data",
+                        Translations.StringNoMatchesFound,
+                        Translations.StringWarning,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
@@ -123,10 +114,7 @@ namespace WindowsForms
                     return;
                 }
 
-                // Get players from first match (starting_eleven + substitutes)
                 var firstMatch = matches[0];
-
-                // Determine if favourite team is home or away
                 bool isHomeTeam = firstMatch.HomeTeam.Code == _favouriteTeamFifaCode;
                 var teamStats = isHomeTeam ? firstMatch.HomeTeamStatistics : firstMatch.AwayTeamStatistics;
 
@@ -136,23 +124,17 @@ namespace WindowsForms
                 if (teamStats.Substitutes != null)
                     _allPlayers.AddRange(teamStats.Substitutes);
 
-                // Sort by shirt number
                 _allPlayers = _allPlayers.OrderBy(p => p.ShirtNumber).ToList();
 
-                Console.WriteLine($"Loaded {_allPlayers.Count} players");
-
-                // Populate panels
                 PopulatePanels();
-
                 labelStatus.Visible = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"Error loading players: {ex.Message}");
                 labelStatus.Visible = false;
                 MessageBox.Show(
-                    $"Failed to load players.\n\n{ex.Message}",
-                    "Error",
+                    Translations.StringErrorLoadingData,
+                    Translations.StringError,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -170,7 +152,6 @@ namespace WindowsForms
                 var control = CreatePlayerControl(player);
                 string identifier = Constant.GeneratePlayerIdentifier(player.Name, player.ShirtNumber);
 
-                // Check if this player is already a favourite
                 if (_settings.IsFavouritePlayer(identifier))
                 {
                     control.IsFavourite = true;
@@ -191,17 +172,14 @@ namespace WindowsForms
             control.SetPlayer(player);
             control.Margin = new Padding(5);
 
-            // Wire up events
             control.PlayerClicked += PlayerControl_Clicked;
             control.PlayerDoubleClicked += PlayerControl_DoubleClicked;
             control.FavouriteToggled += PlayerControl_FavouriteToggled;
 
-            // Drag detection events
             control.MouseDown += PlayerControl_MouseDown;
             control.MouseMove += PlayerControl_MouseMove;
             control.MouseUp += PlayerControl_MouseUp;
 
-            // Context menu
             control.ContextMenuStrip = _contextMenu;
 
             return control;
@@ -217,7 +195,6 @@ namespace WindowsForms
 
             if (ModifierKeys.HasFlag(Keys.Control))
             {
-                // Ctrl+Click: Toggle selection (multi-select)
                 if (control.IsSelected)
                 {
                     control.IsSelected = false;
@@ -231,7 +208,6 @@ namespace WindowsForms
             }
             else
             {
-                // Regular click: Select only this one
                 ClearSelection();
                 control.IsSelected = true;
                 _selectedControls.Add(control);
@@ -243,16 +219,12 @@ namespace WindowsForms
         private void PlayerControl_DoubleClicked(object? sender, EventArgs e)
         {
             if (sender is not PlayerUserControl control) return;
-
-            // Double-click toggles favourite status
             ToggleFavourite(control);
         }
 
         private void PlayerControl_FavouriteToggled(object? sender, EventArgs e)
         {
             if (sender is not PlayerUserControl control) return;
-
-            // Star was clicked - toggle favourite
             ToggleFavourite(control);
         }
 
@@ -262,7 +234,6 @@ namespace WindowsForms
 
             if (e.Button == MouseButtons.Left)
             {
-                // Record the starting point for drag detection
                 _dragStartPoint = e.Location;
                 _dragSourceControl = control;
                 _isDragging = false;
@@ -272,11 +243,8 @@ namespace WindowsForms
         private void PlayerControl_MouseMove(object? sender, MouseEventArgs e)
         {
             if (sender is not PlayerUserControl control) return;
-
-            // Only process if left button is held and we have a drag source
             if (e.Button != MouseButtons.Left || _dragSourceControl == null) return;
 
-            // Check if we've moved beyond the drag threshold
             if (!_isDragging)
             {
                 int deltaX = Math.Abs(e.X - _dragStartPoint.X);
@@ -286,7 +254,6 @@ namespace WindowsForms
                 {
                     _isDragging = true;
 
-                    // If the drag source isn't selected, select only it
                     if (!_dragSourceControl.IsSelected)
                     {
                         ClearSelection();
@@ -294,13 +261,11 @@ namespace WindowsForms
                         _selectedControls.Add(_dragSourceControl);
                     }
 
-                    // Start the drag operation with all selected controls
                     if (_selectedControls.Count > 0)
                     {
                         _dragSourceControl.DoDragDrop(_selectedControls.ToList(), DragDropEffects.Move);
                     }
 
-                    // Reset drag state after drag completes
                     _dragSourceControl = null;
                     _isDragging = false;
                 }
@@ -309,7 +274,6 @@ namespace WindowsForms
 
         private void PlayerControl_MouseUp(object? sender, MouseEventArgs e)
         {
-            // Reset drag state on mouse up
             _dragSourceControl = null;
             _isDragging = false;
         }
@@ -334,7 +298,6 @@ namespace WindowsForms
         {
             if (e.Data?.GetData(typeof(List<PlayerUserControl>)) is not List<PlayerUserControl> controls) return;
 
-            // Check if we can add more favourites
             int currentFavourites = panelFavourites.Controls.Count;
             int toAdd = controls.Count(c => c.Parent != panelFavourites);
 
@@ -349,7 +312,6 @@ namespace WindowsForms
                 return;
             }
 
-            // Move controls to favourites panel (maintain order)
             foreach (var control in controls.OrderBy(c => c.ShirtNumber))
             {
                 if (control.Parent != panelFavourites)
@@ -368,7 +330,6 @@ namespace WindowsForms
         {
             if (e.Data?.GetData(typeof(List<PlayerUserControl>)) is not List<PlayerUserControl> controls) return;
 
-            // Move controls to others panel (maintain order)
             foreach (var control in controls.OrderBy(c => c.ShirtNumber))
             {
                 if (control.Parent != panelOthers)
@@ -396,9 +357,7 @@ namespace WindowsForms
                 return;
             }
 
-            // Check if any selected are in Others panel (can add to favourites)
             bool anyInOthers = _selectedControls.Any(c => c.Parent == panelOthers);
-            // Check if any selected are in Favourites panel (can remove from favourites)
             bool anyInFavourites = _selectedControls.Any(c => c.Parent == panelFavourites);
 
             _menuAddToFavourites.Enabled = anyInOthers;
@@ -411,7 +370,6 @@ namespace WindowsForms
 
             if (controlsToMove.Count == 0) return;
 
-            // Check limit
             int currentFavourites = panelFavourites.Controls.Count;
             if (currentFavourites + controlsToMove.Count > MaxFavourites)
             {
@@ -424,7 +382,6 @@ namespace WindowsForms
                 return;
             }
 
-            // Move controls maintaining order
             foreach (var control in controlsToMove.OrderBy(c => c.ShirtNumber))
             {
                 panelOthers.Controls.Remove(control);
@@ -440,7 +397,6 @@ namespace WindowsForms
         {
             var controlsToMove = _selectedControls.Where(c => c.Parent == panelFavourites).ToList();
 
-            // Move controls maintaining order
             foreach (var control in controlsToMove.OrderBy(c => c.ShirtNumber))
             {
                 panelFavourites.Controls.Remove(control);
@@ -456,15 +412,11 @@ namespace WindowsForms
 
         #region Helper Methods
 
-        /// <summary>
-        /// Inserts a player control into a panel at the correct position to maintain shirt number order
-        /// </summary>
         private void InsertControlInOrder(FlowLayoutPanel panel, PlayerUserControl control)
         {
             int shirtNumber = control.ShirtNumber;
             int insertIndex = 0;
 
-            // Find the correct position based on shirt number
             for (int i = 0; i < panel.Controls.Count; i++)
             {
                 if (panel.Controls[i] is PlayerUserControl existingControl)
@@ -477,7 +429,6 @@ namespace WindowsForms
                 }
             }
 
-            // Add the control and set its position
             panel.Controls.Add(control);
             panel.Controls.SetChildIndex(control, insertIndex);
         }
@@ -486,14 +437,12 @@ namespace WindowsForms
         {
             if (control.Parent == panelFavourites)
             {
-                // Remove from favourites (insert in correct position in Others)
                 panelFavourites.Controls.Remove(control);
                 control.IsFavourite = false;
                 InsertControlInOrder(panelOthers, control);
             }
             else if (control.Parent == panelOthers)
             {
-                // Add to favourites (check limit)
                 if (panelFavourites.Controls.Count >= MaxFavourites)
                 {
                     MessageBox.Show(
@@ -502,7 +451,6 @@ namespace WindowsForms
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
                     );
-                    // Reset the star state since we can't add
                     control.IsFavourite = false;
                     return;
                 }
@@ -529,8 +477,6 @@ namespace WindowsForms
         {
             int count = panelFavourites.Controls.Count;
             labelFavouritesCount.Text = $"({count}/{MaxFavourites})";
-
-            // Enable/disable save button
             buttonSave.Enabled = true;
         }
 
@@ -545,25 +491,21 @@ namespace WindowsForms
                 buttonSave.Enabled = false;
                 buttonSave.Text = Translations.StringLoading;
 
-                // Clear existing favourites
                 _settings.ClearFavouritePlayers();
 
-                // Add current favourites
                 foreach (Control control in panelFavourites.Controls)
                 {
                     if (control is PlayerUserControl playerControl)
                     {
                         _settings.AddFavouritePlayer(playerControl.PlayerIdentifier);
-                        Console.WriteLine($"Saved favourite: {playerControl.PlayerIdentifier}");
                     }
                 }
 
-                // Save settings
                 await _settings.SaveSettingsAsync();
 
                 MessageBox.Show(
-                    $"Saved {panelFavourites.Controls.Count} favourite player(s).",
-                    Translations.StringFavouritePlayers,
+                    Translations.StringFavouritesSaved,
+                    Translations.StringSuccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
@@ -571,12 +513,11 @@ namespace WindowsForms
                 buttonSave.Text = Translations.StringSave;
                 buttonSave.Enabled = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"Error saving favourites: {ex.Message}");
                 MessageBox.Show(
-                    $"Failed to save favourites.\n\n{ex.Message}",
-                    "Error",
+                    Translations.StringErrorSavingSettings,
+                    Translations.StringError,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -587,7 +528,6 @@ namespace WindowsForms
 
         private void FavoritePlayersForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Check if there are unsaved changes
             var currentFavourites = new HashSet<string>();
             foreach (Control control in panelFavourites.Controls)
             {
@@ -602,8 +542,8 @@ namespace WindowsForms
             if (!currentFavourites.SetEquals(savedFavourites))
             {
                 var result = MessageBox.Show(
-                    "You have unsaved changes. Do you want to save before closing?",
-                    Translations.StringFavouritePlayers,
+                    Translations.StringUnsavedChanges,
+                    Translations.StringConfirm,
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Question
                 );
@@ -636,7 +576,6 @@ namespace WindowsForms
                     return true;
 
                 case Keys.Control | Keys.A:
-                    // Select all in current panel
                     SelectAllInPanel();
                     return true;
 
@@ -647,7 +586,6 @@ namespace WindowsForms
 
         private void SelectAllInPanel()
         {
-            // Determine which panel has focus based on last selected control
             FlowLayoutPanel? targetPanel = null;
 
             if (_selectedControls.Count > 0)
@@ -656,7 +594,6 @@ namespace WindowsForms
             }
             else
             {
-                // Default to others panel
                 targetPanel = panelOthers;
             }
 

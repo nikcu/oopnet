@@ -77,7 +77,7 @@ namespace WpfApp
         {
             Title = $"World Cup 2018 - {(_championship == "m" ? Translations.StringMens : Translations.StringWomens)}";
             labelFavouriteTeam.Content = Translations.StringFavouriteTeam;
-            labelOpponent.Content = "Opponent";
+            labelOpponent.Content = Translations.StringOpponent;
             buttonSettings.Content = Translations.StringSettings;
             textLoading.Text = Translations.StringLoading;
         }
@@ -101,14 +101,14 @@ namespace WpfApp
                     _allMatches = await _repository.GetAllMatchesAsync(_championship) ?? new List<Match>();
 
                     PopulateFavouriteTeamComboBox();
-                    textStatus.Text = $"Loaded {_teams.Count} teams";
+                    textStatus.Text = "";
                 }
                 else
                 {
-                    textStatus.Text = "No teams found";
+                    textStatus.Text = Translations.StringNoTeamsAvailable;
                     MessageBox.Show(
-                        "No teams found from the API.",
-                        "No Data",
+                        Translations.StringNoTeamsAvailable,
+                        Translations.StringWarning,
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning
                     );
@@ -116,10 +116,11 @@ namespace WpfApp
             }
             catch (Exception ex)
             {
-                textStatus.Text = "Error loading teams";
+                Console.WriteLine($"Error loading teams: {ex.Message}");
+                textStatus.Text = Translations.StringError;
                 MessageBox.Show(
-                    $"Failed to load teams.\n\n{ex.Message}",
-                    "Error",
+                    Translations.StringErrorLoadingTeams,
+                    Translations.StringError,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
                 );

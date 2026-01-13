@@ -58,10 +58,10 @@ namespace WpfApp.Windows
             Title = $"World Cup 2018 - {Translations.StringSettings}";
             labelLanguage.Content = Translations.StringLanguage;
             labelChampionship.Content = Translations.StringChampionship;
-            labelDisplayMode.Content = "Display Mode"; // TODO: Add translation
-            labelResolution.Content = "Resolution"; // TODO: Add translation
+            labelDisplayMode.Content = Translations.StringDisplayMode;
+            labelResolution.Content = Translations.StringResolution;
             buttonSave.Content = Translations.StringSave;
-            buttonCancel.Content = "Cancel"; // TODO: Add translation
+            buttonCancel.Content = Translations.StringCancel;
         }
 
         private void InitializeComboBoxes()
@@ -102,8 +102,8 @@ namespace WpfApp.Windows
 
             // Display Mode ComboBox
             comboBoxDisplayMode.Items.Clear();
-            comboBoxDisplayMode.Items.Add(new WpfComboBoxItem { Content = "Fullscreen", Tag = "fullscreen" });
-            comboBoxDisplayMode.Items.Add(new WpfComboBoxItem { Content = "Windowed", Tag = "windowed" });
+            comboBoxDisplayMode.Items.Add(new WpfComboBoxItem { Content = Translations.StringFullscreen, Tag = "fullscreen" });
+            comboBoxDisplayMode.Items.Add(new WpfComboBoxItem { Content = Translations.StringWindowed, Tag = "windowed" });
 
             // Select current display mode
             comboBoxDisplayMode.SelectedIndex = _settings.WpfIsFullscreen ? 0 : 1;
@@ -212,9 +212,10 @@ namespace WpfApp.Windows
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error saving settings: {ex.Message}");
                 MessageBox.Show(
-                    $"Failed to save settings.\n\n{ex.Message}",
-                    "Error",
+                    Translations.StringErrorSavingSettings,
+                    Translations.StringError,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
                 );

@@ -240,4 +240,97 @@
   <data name="StringPrintExport" xml:space="preserve">
     <value>Print / Export</value>
   </data>
+  <data name="StringError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="StringSuccess" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="StringWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="StringConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="StringCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="StringYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="StringNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="StringNoTeamsAvailable" xml:space="preserve">
+    <value>No teams available</value>
+  </data>
+  <data name="StringErrorLoadingTeams" xml:space="preserve">
+    <value>Failed to load teams. Check your connection.</value>
+  </data>
+  <data name="StringSettingsSaved" xml:space="preserve">
+    <value>Settings saved.</value>
+  </data>
+  <data name="StringErrorSavingSettings" xml:space="preserve">
+    <value>Failed to save settings.</value>
+  </data>
+  <data name="StringNoFavouriteTeam" xml:space="preserve">
+    <value>No favourite team selected.</value>
+  </data>
+  <data name="StringSelectFavouriteTeamFirst" xml:space="preserve">
+    <value>Select a favourite team first.</value>
+  </data>
+  <data name="StringContinueQuestion" xml:space="preserve">
+    <value>Continue?</value>
+  </data>
+  <data name="StringImageAssigned" xml:space="preserve">
+    <value>Image assigned.</value>
+  </data>
+  <data name="StringImageRemoved" xml:space="preserve">
+    <value>Image removed.</value>
+  </data>
+  <data name="StringErrorLoadingImage" xml:space="preserve">
+    <value>Failed to load image.</value>
+  </data>
+  <data name="StringNoMatchesFound" xml:space="preserve">
+    <value>No matches found.</value>
+  </data>
+  <data name="StringErrorLoadingData" xml:space="preserve">
+    <value>Failed to load data.</value>
+  </data>
+  <data name="StringFavouritesSaved" xml:space="preserve">
+    <value>Favourites saved.</value>
+  </data>
+  <data name="StringUnsavedChanges" xml:space="preserve">
+    <value>You have unsaved changes. Save before closing?</value>
+  </data>
+  <data name="StringRemoveConfirmation" xml:space="preserve">
+    <value>Remove this item?</value>
+  </data>
+  <data name="StringDisplayMode" xml:space="preserve">
+    <value>Display Mode</value>
+  </data>
+  <data name="StringResolution" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="StringFullscreen" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="StringWindowed" xml:space="preserve">
+    <value>Windowed</value>
+  </data>
+  <data name="StringOpponent" xml:space="preserve">
+    <value>Opponent</value>
+  </data>
+  <data name="StringPlayerNotFound" xml:space="preserve">
+    <value>Player not found. Try using Browse Image.</value>
+  </data>
+  <data name="StringNoImageAvailable" xml:space="preserve">
+    <value>No image available for this player.</value>
+  </data>
+  <data name="StringNetworkError" xml:space="preserve">
+    <value>Network error. Check your connection.</value>
+  </data>
+  <data name="StringTimeoutError" xml:space="preserve">
+    <value>Request timed out. Try again later.</value>
+  </data>
 </root>

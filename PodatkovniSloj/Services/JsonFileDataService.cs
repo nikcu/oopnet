@@ -18,11 +18,6 @@ namespace DataLayer.Services
             }
         }
 
-        /// <summary>
-        /// Loads team results from a JSON file
-        /// </summary>
-        /// <param name="championship">"m" for men's or "f" for women's</param>
-        /// <returns>List of team results</returns>
         public async Task<List<TeamResult>> GetTeamResultsAsync(string championship)
         {
             ValidateChampionship(championship);
@@ -48,11 +43,6 @@ namespace DataLayer.Services
             }
         }
 
-        /// <summary>
-        /// Loads all matches from a JSON file
-        /// </summary>
-        /// <param name="championship">"m" for men's or "f" for women's</param>
-        /// <returns>List of all matches</returns>
         public async Task<List<Match>> GetAllMatchesAsync(string championship)
         {
             ValidateChampionship(championship);
@@ -78,12 +68,6 @@ namespace DataLayer.Services
             }
         }
 
-        /// <summary>
-        /// Gets matches for a specific country by filtering all matches
-        /// </summary>
-        /// <param name="championship">"m" for men's or "f" for women's</param>
-        /// <param name="fifaCode">3-letter FIFA country code (e.g., "ENG", "FRA")</param>
-        /// <returns>List of matches for the specified country</returns>
         public async Task<List<Match>> GetCountryMatchesAsync(string championship, string fifaCode)
         {
             if (string.IsNullOrWhiteSpace(fifaCode))
@@ -93,7 +77,6 @@ namespace DataLayer.Services
 
             var allMatches = await GetAllMatchesAsync(championship);
 
-            // Filter matches where the country is either home or away team
             var countryMatches = allMatches
                 .Where(m => m.HomeTeam.Code == fifaCode || m.AwayTeam.Code == fifaCode)
                 .ToList();

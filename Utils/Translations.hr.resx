@@ -240,4 +240,97 @@
   <data name="StringPrintExport" xml:space="preserve">
     <value>Ispis / Izvoz</value>
   </data>
+  <data name="StringError" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="StringSuccess" xml:space="preserve">
+    <value>Uspjeh</value>
+  </data>
+  <data name="StringWarning" xml:space="preserve">
+    <value>Upozorenje</value>
+  </data>
+  <data name="StringConfirm" xml:space="preserve">
+    <value>Potvrdi</value>
+  </data>
+  <data name="StringCancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="StringYes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="StringNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="StringNoTeamsAvailable" xml:space="preserve">
+    <value>Nema dostupnih ekipa</value>
+  </data>
+  <data name="StringErrorLoadingTeams" xml:space="preserve">
+    <value>Učitavanje ekipa nije uspjelo. Provjerite vezu.</value>
+  </data>
+  <data name="StringSettingsSaved" xml:space="preserve">
+    <value>Postavke spremljene.</value>
+  </data>
+  <data name="StringErrorSavingSettings" xml:space="preserve">
+    <value>Spremanje postavki nije uspjelo.</value>
+  </data>
+  <data name="StringNoFavouriteTeam" xml:space="preserve">
+    <value>Omiljena ekipa nije odabrana.</value>
+  </data>
+  <data name="StringSelectFavouriteTeamFirst" xml:space="preserve">
+    <value>Prvo odaberite omiljenu ekipu.</value>
+  </data>
+  <data name="StringContinueQuestion" xml:space="preserve">
+    <value>Nastaviti?</value>
+  </data>
+  <data name="StringImageAssigned" xml:space="preserve">
+    <value>Slika dodijeljena.</value>
+  </data>
+  <data name="StringImageRemoved" xml:space="preserve">
+    <value>Slika uklonjena.</value>
+  </data>
+  <data name="StringErrorLoadingImage" xml:space="preserve">
+    <value>Učitavanje slike nije uspjelo.</value>
+  </data>
+  <data name="StringNoMatchesFound" xml:space="preserve">
+    <value>Nema pronađenih utakmica.</value>
+  </data>
+  <data name="StringErrorLoadingData" xml:space="preserve">
+    <value>Učitavanje podataka nije uspjelo.</value>
+  </data>
+  <data name="StringFavouritesSaved" xml:space="preserve">
+    <value>Omiljeni spremljeni.</value>
+  </data>
+  <data name="StringUnsavedChanges" xml:space="preserve">
+    <value>Imate nespremljene promjene. Spremiti prije zatvaranja?</value>
+  </data>
+  <data name="StringRemoveConfirmation" xml:space="preserve">
+    <value>Ukloniti ovu stavku?</value>
+  </data>
+  <data name="StringDisplayMode" xml:space="preserve">
+    <value>Način prikaza</value>
+  </data>
+  <data name="StringResolution" xml:space="preserve">
+    <value>Razlučivost</value>
+  </data>
+  <data name="StringFullscreen" xml:space="preserve">
+    <value>Puni zaslon</value>
+  </data>
+  <data name="StringWindowed" xml:space="preserve">
+    <value>Prozor</value>
+  </data>
+  <data name="StringOpponent" xml:space="preserve">
+    <value>Protivnik</value>
+  </data>
+  <data name="StringPlayerNotFound" xml:space="preserve">
+    <value>Igrač nije pronađen. Pokušajte odabrati sliku.</value>
+  </data>
+  <data name="StringNoImageAvailable" xml:space="preserve">
+    <value>Nema dostupne slike za ovog igrača.</value>
+  </data>
+  <data name="StringNetworkError" xml:space="preserve">
+    <value>Mrežna greška. Provjerite vezu.</value>
+  </data>
+  <data name="StringTimeoutError" xml:space="preserve">
+    <value>Zahtjev je istekao. Pokušajte kasnije.</value>
+  </data>
 </root>

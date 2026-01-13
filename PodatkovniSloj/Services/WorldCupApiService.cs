@@ -18,21 +18,11 @@ namespace DataLayer.Services
             };
         }
 
-        /// <summary>
-        /// Fetches team results for the specified championship
-        /// </summary>
-        /// <param name="championship">"m" for men's or "f" for women's</param>
-        /// <returns>List of team results</returns>
         public async Task<List<TeamResult>> GetTeamResultsAsync(string championship)
         {
             ValidateChampionship(championship);
 
-            string endpoint = $"/{championship switch
-            {
-                "m" => "men",
-                "f" => "women",
-                _ => throw new ArgumentException($"Invalid championship: {championship}")
-            }}/teams/results";
+            string endpoint = $"/{(championship == "m" ? "men" : "women")}/teams/results";
 
             try
             {
@@ -54,21 +44,11 @@ namespace DataLayer.Services
             }
         }
 
-        /// <summary>
-        /// Fetches all matches for the specified championship
-        /// </summary>
-        /// <param name="championship">"m" for men's or "f" for women's</param>
-        /// <returns>List of all matches</returns>
         public async Task<List<Match>> GetAllMatchesAsync(string championship)
         {
             ValidateChampionship(championship);
 
-            string endpoint = $"/{championship switch
-            {
-                "m" => "men",
-                "f" => "women",
-                _ => throw new ArgumentException($"Invalid championship: {championship}")
-            }}/matches";
+            string endpoint = $"/{(championship == "m" ? "men" : "women")}/matches";
 
             try
             {
@@ -90,12 +70,6 @@ namespace DataLayer.Services
             }
         }
 
-        /// <summary>
-        /// Fetches matches for a specific country
-        /// </summary>
-        /// <param name="championship">"m" for men's or "f" for women's</param>
-        /// <param name="fifaCode">3-letter FIFA country code (e.g., "ENG", "FRA")</param>
-        /// <returns>List of matches for the specified country</returns>
         public async Task<List<Match>> GetCountryMatchesAsync(string championship, string fifaCode)
         {
             ValidateChampionship(championship);
@@ -105,12 +79,7 @@ namespace DataLayer.Services
                 throw new ArgumentException("FIFA code cannot be empty", nameof(fifaCode));
             }
 
-            string endpoint = $"/{championship switch
-            {
-                "m" => "men",
-                "f" => "women",
-                _ => throw new ArgumentException($"Invalid championship: {championship}")
-            }}/matches/country?fifa_code={fifaCode}";
+            string endpoint = $"/{(championship == "m" ? "men" : "women")}/matches/country?fifa_code={fifaCode}";
 
             try
             {
