@@ -141,4 +141,103 @@
   <data name="StringLanguage" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="StringFavouriteTeam" xml:space="preserve">
+    <value>Favourite Team</value>
+  </data>
+  <data name="StringLoading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="StringRankings" xml:space="preserve">
+    <value>Rankings</value>
+  </data>
+  <data name="StringGoalScorers" xml:space="preserve">
+    <value>Goal Scorers</value>
+  </data>
+  <data name="StringYellowCards" xml:space="preserve">
+    <value>Yellow Cards</value>
+  </data>
+  <data name="StringAttendance" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="StringPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="StringGoals" xml:space="preserve">
+    <value>Goals</value>
+  </data>
+  <data name="StringCards" xml:space="preserve">
+    <value>Cards</value>
+  </data>
+  <data name="StringLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="StringMatch" xml:space="preserve">
+    <value>Match</value>
+  </data>
+  <data name="StringViewRankings" xml:space="preserve">
+    <value>View Rankings</value>
+  </data>
+  <data name="StringPlayerImages" xml:space="preserve">
+    <value>Player Images</value>
+  </data>
+  <data name="StringManagePlayerImages" xml:space="preserve">
+    <value>Manage Player Images</value>
+  </data>
+  <data name="StringBrowseImage" xml:space="preserve">
+    <value>Browse Image...</value>
+  </data>
+  <data name="StringRemoveImage" xml:space="preserve">
+    <value>Remove Image</value>
+  </data>
+  <data name="StringNoImageAssigned" xml:space="preserve">
+    <value>No image assigned</value>
+  </data>
+  <data name="StringSelectPlayer" xml:space="preserve">
+    <value>Select a player from the list</value>
+  </data>
+  <data name="StringImageFiles" xml:space="preserve">
+    <value>Image Files</value>
+  </data>
+  <data name="StringFetchFromApi" xml:space="preserve">
+    <value>Fetch from API</value>
+  </data>
+  <data name="StringCaptain" xml:space="preserve">
+    <value>Captain</value>
+  </data>
+  <data name="StringFavourite" xml:space="preserve">
+    <value>Favourite</value>
+  </data>
+  <data name="StringFavouritePlayers" xml:space="preserve">
+    <value>Favourite Players</value>
+  </data>
+  <data name="StringOtherPlayers" xml:space="preserve">
+    <value>Other Players</value>
+  </data>
+  <data name="StringAddToFavourites" xml:space="preserve">
+    <value>Add to Favourites</value>
+  </data>
+  <data name="StringRemoveFromFavourites" xml:space="preserve">
+    <value>Remove from Favourites</value>
+  </data>
+  <data name="StringMaxFavouritesReached" xml:space="preserve">
+    <value>Maximum of 3 favourite players allowed</value>
+  </data>
+  <data name="StringSelectFavouritePlayers" xml:space="preserve">
+    <value>Select Favourite Players</value>
+  </data>
+  <data name="StringDragDropInstructions" xml:space="preserve">
+    <value>Drag players between panels, double-click, or use context menu to manage.</value>
+  </data>
+  <data name="StringCloseConfirmation" xml:space="preserve">
+    <value>Are you sure you want to close the application?</value>
+  </data>
+  <data name="StringPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="StringNoDataToPrint" xml:space="preserve">
+    <value>No data available to print.</value>
+  </data>
+  <data name="StringPrintExport" xml:space="preserve">
+    <value>Print / Export</value>
+  </data>
 </root>

@@ -1,0 +1,334 @@
+<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="World Cup 2018"
+        Height="700" Width="1000"
+        MinHeight="600" MinWidth="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        KeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <!-- Common Styles -->
+        <Style TargetType="Label" x:Key="HeaderLabel">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="MinWidth" Value="200"/>
+        </Style>
+        <Style TargetType="Button" x:Key="TeamButton">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinWidth" Value="120"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Bar with Settings -->
+        <Border Grid.Row="0" Background="#f0f0f0" Padding="10">
+            <DockPanel>
+                <Button x:Name="buttonSettings"
+                        Content="Settings"
+                        DockPanel.Dock="Right"
+                        Click="ButtonSettings_Click"
+                        Padding="15,8"/>
+                <TextBlock Text="World Cup 2018"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Team Selection -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <StackPanel Margin="20,0">
+                    <Label x:Name="labelFavouriteTeam" Content="Favourite Team" Style="{StaticResource HeaderLabel}"/>
+                    <ComboBox x:Name="comboBoxFavouriteTeam"
+                              SelectionChanged="ComboBoxFavouriteTeam_SelectionChanged"/>
+                </StackPanel>
+
+                <TextBlock Text="vs"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Margin="20,15,20,0"/>
+
+                <StackPanel Margin="20,0">
+                    <Label x:Name="labelOpponent" Content="Opponent" Style="{StaticResource HeaderLabel}"/>
+                    <ComboBox x:Name="comboBoxOpponent"
+                              SelectionChanged="ComboBoxOpponent_SelectionChanged"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Match Result Display -->
+            <Border Grid.Row="1"
+                    Background="#e8f4e8"
+                    CornerRadius="10"
+                    Padding="30,20"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20"
+                    x:Name="borderMatchResult"
+                    Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <!-- Home Team -->
+                    <StackPanel HorizontalAlignment="Center" MinWidth="200">
+                        <TextBlock x:Name="textHomeTeam"
+                                   Text="Home Team"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Center"/>
+                        <Button x:Name="buttonHomeTeamInfo"
+                                Content="Team Info"
+                                Style="{StaticResource TeamButton}"
+                                Click="ButtonHomeTeamInfo_Click"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,0"/>
+                    </StackPanel>
+
+                    <!-- Score -->
+                    <StackPanel Margin="40,0" VerticalAlignment="Center">
+                        <TextBlock x:Name="textScore"
+                                   Text="0 : 0"
+                                   FontSize="48"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="textMatchInfo"
+                                   Text="Group Stage"
+                                   FontSize="12"
+                                   Foreground="#666"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- Away Team -->
+                    <StackPanel HorizontalAlignment="Center" MinWidth="200">
+                        <TextBlock x:Name="textAwayTeam"
+                                   Text="Away Team"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Center"/>
+                        <Button x:Name="buttonAwayTeamInfo"
+                                Content="Team Info"
+                                Style="{StaticResource TeamButton}"
+                                Click="ButtonAwayTeamInfo_Click"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Football Field with Lineups -->
+            <Border Grid.Row="2"
+                    Background="#2d5a27"
+                    CornerRadius="10"
+                    x:Name="borderField"
+                    Visibility="Collapsed">
+                <Grid>
+                    <!-- Center Circle Overlay -->
+                    <Ellipse Width="120" Height="120"
+                             Stroke="White" StrokeThickness="2" Opacity="0.5"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             IsHitTestVisible="False"/>
+
+                    <!-- Center Dot -->
+                    <Ellipse Width="12" Height="12"
+                             Fill="White" Opacity="0.5"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             IsHitTestVisible="False"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Home Team Lineup (Left Half) -->
+                        <Grid Grid.Column="0" Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="textHomeLineupTitle"
+                                       Text="Home Lineup"
+                                       Foreground="White"
+                                       FontSize="14"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,5,0,5"/>
+
+                            <!-- Formation Grid: GK | DEF | MID | FWD -->
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Goalkeepers -->
+                                <ItemsControl x:Name="itemsHomeGoalies" Grid.Column="0">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <!-- Defenders -->
+                                <ItemsControl x:Name="itemsHomeDefenders" Grid.Column="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <!-- Midfielders -->
+                                <ItemsControl x:Name="itemsHomeMidfielders" Grid.Column="2">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <!-- Forwards -->
+                                <ItemsControl x:Name="itemsHomeForwards" Grid.Column="3">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Grid>
+                        </Grid>
+
+                        <!-- Center Line -->
+                        <Rectangle Grid.Column="1" Fill="White" Opacity="0.5"/>
+
+                        <!-- Away Team Lineup (Right Half) -->
+                        <Grid Grid.Column="2" Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="textAwayLineupTitle"
+                                       Text="Away Lineup"
+                                       Foreground="White"
+                                       FontSize="14"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,5,0,5"/>
+
+                            <!-- Formation Grid: FWD | MID | DEF | GK (mirrored) -->
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Forwards -->
+                                <ItemsControl x:Name="itemsAwayForwards" Grid.Column="0">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <!-- Midfielders -->
+                                <ItemsControl x:Name="itemsAwayMidfielders" Grid.Column="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <!-- Defenders -->
+                                <ItemsControl x:Name="itemsAwayDefenders" Grid.Column="2">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <!-- Goalkeepers -->
+                                <ItemsControl x:Name="itemsAwayGoalies" Grid.Column="3">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Loading Indicator -->
+            <StackPanel x:Name="loadingPanel"
+                        Grid.Row="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                <ProgressBar IsIndeterminate="True"
+                             Width="200"
+                             Height="20"/>
+                <TextBlock x:Name="textLoading"
+                           Text="Loading..."
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"
+                           FontSize="14"/>
+            </StackPanel>
+
+            <!-- No Match Selected Message -->
+            <TextBlock x:Name="textNoMatch"
+                       Grid.Row="2"
+                       Text="Select a favourite team and opponent to view match details"
+                       FontSize="16"
+                       Foreground="#888"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Grid>
+
+        <!-- Status Bar -->
+        <Border Grid.Row="2" Background="#f0f0f0" Padding="10,5">
+            <TextBlock x:Name="textStatus"
+                       Text="Ready"
+                       FontSize="12"
+                       Foreground="#666"/>
+        </Border>
+    </Grid>
+</Window>

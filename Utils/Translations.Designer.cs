@@ -131,5 +131,302 @@ namespace Utils {
                 return ResourceManager.GetString("StringWomens", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Favourite Team.
+        /// </summary>
+        public static string StringFavouriteTeam {
+            get {
+                return ResourceManager.GetString("StringFavouriteTeam", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string StringLoading {
+            get {
+                return ResourceManager.GetString("StringLoading", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rankings.
+        /// </summary>
+        public static string StringRankings {
+            get {
+                return ResourceManager.GetString("StringRankings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Goal Scorers.
+        /// </summary>
+        public static string StringGoalScorers {
+            get {
+                return ResourceManager.GetString("StringGoalScorers", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow Cards.
+        /// </summary>
+        public static string StringYellowCards {
+            get {
+                return ResourceManager.GetString("StringYellowCards", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Attendance.
+        /// </summary>
+        public static string StringAttendance {
+            get {
+                return ResourceManager.GetString("StringAttendance", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Player.
+        /// </summary>
+        public static string StringPlayer {
+            get {
+                return ResourceManager.GetString("StringPlayer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Goals.
+        /// </summary>
+        public static string StringGoals {
+            get {
+                return ResourceManager.GetString("StringGoals", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cards.
+        /// </summary>
+        public static string StringCards {
+            get {
+                return ResourceManager.GetString("StringCards", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string StringLocation {
+            get {
+                return ResourceManager.GetString("StringLocation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Match.
+        /// </summary>
+        public static string StringMatch {
+            get {
+                return ResourceManager.GetString("StringMatch", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to View Rankings.
+        /// </summary>
+        public static string StringViewRankings {
+            get {
+                return ResourceManager.GetString("StringViewRankings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Player Images.
+        /// </summary>
+        public static string StringPlayerImages {
+            get {
+                return ResourceManager.GetString("StringPlayerImages", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Manage Player Images.
+        /// </summary>
+        public static string StringManagePlayerImages {
+            get {
+                return ResourceManager.GetString("StringManagePlayerImages", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Browse Image....
+        /// </summary>
+        public static string StringBrowseImage {
+            get {
+                return ResourceManager.GetString("StringBrowseImage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Image.
+        /// </summary>
+        public static string StringRemoveImage {
+            get {
+                return ResourceManager.GetString("StringRemoveImage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No image assigned.
+        /// </summary>
+        public static string StringNoImageAssigned {
+            get {
+                return ResourceManager.GetString("StringNoImageAssigned", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select a player from the list.
+        /// </summary>
+        public static string StringSelectPlayer {
+            get {
+                return ResourceManager.GetString("StringSelectPlayer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Image Files.
+        /// </summary>
+        public static string StringImageFiles {
+            get {
+                return ResourceManager.GetString("StringImageFiles", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Fetch from API.
+        /// </summary>
+        public static string StringFetchFromApi {
+            get {
+                return ResourceManager.GetString("StringFetchFromApi", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Captain.
+        /// </summary>
+        public static string StringCaptain {
+            get {
+                return ResourceManager.GetString("StringCaptain", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Favourite.
+        /// </summary>
+        public static string StringFavourite {
+            get {
+                return ResourceManager.GetString("StringFavourite", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Favourite Players.
+        /// </summary>
+        public static string StringFavouritePlayers {
+            get {
+                return ResourceManager.GetString("StringFavouritePlayers", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Other Players.
+        /// </summary>
+        public static string StringOtherPlayers {
+            get {
+                return ResourceManager.GetString("StringOtherPlayers", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Add to Favourites.
+        /// </summary>
+        public static string StringAddToFavourites {
+            get {
+                return ResourceManager.GetString("StringAddToFavourites", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from Favourites.
+        /// </summary>
+        public static string StringRemoveFromFavourites {
+            get {
+                return ResourceManager.GetString("StringRemoveFromFavourites", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum of 3 favourite players allowed.
+        /// </summary>
+        public static string StringMaxFavouritesReached {
+            get {
+                return ResourceManager.GetString("StringMaxFavouritesReached", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select Favourite Players.
+        /// </summary>
+        public static string StringSelectFavouritePlayers {
+            get {
+                return ResourceManager.GetString("StringSelectFavouritePlayers", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Drag players between panels, double-click, or use context menu to manage..
+        /// </summary>
+        public static string StringDragDropInstructions {
+            get {
+                return ResourceManager.GetString("StringDragDropInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to close the application?.
+        /// </summary>
+        public static string StringCloseConfirmation {
+            get {
+                return ResourceManager.GetString("StringCloseConfirmation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        public static string StringPrint {
+            get {
+                return ResourceManager.GetString("StringPrint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No data available to print..
+        /// </summary>
+        public static string StringNoDataToPrint {
+            get {
+                return ResourceManager.GetString("StringNoDataToPrint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Print / Export.
+        /// </summary>
+        public static string StringPrintExport {
+            get {
+                return ResourceManager.GetString("StringPrintExport", resourceCulture);
+            }
+        }
     }
 }

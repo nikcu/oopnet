@@ -1,0 +1,149 @@
+<Window x:Class="WpfApp.Windows.PlayerDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Player Details"
+        Height="450" Width="350"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        Loaded="Window_Loaded"
+        KeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#666"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ValueStyle">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- Animation trigger - 0.3 seconds -->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <!-- Fade in animation - 0.3 seconds -->
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="Opacity"
+                        From="0" To="1"
+                        Duration="0:0:0.3"/>
+                    <!-- Slide up animation -->
+                    <DoubleAnimation
+                        Storyboard.TargetName="mainGrid"
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                        From="20" To="0"
+                        Duration="0:0:0.3">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid x:Name="mainGrid" Margin="20">
+        <Grid.RenderTransform>
+            <TranslateTransform X="0" Y="0"/>
+        </Grid.RenderTransform>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Player Image & Basic Info -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <!-- Player Image -->
+            <Border Width="100" Height="100"
+                    CornerRadius="50"
+                    BorderBrush="#ddd"
+                    BorderThickness="2"
+                    Margin="0,0,0,15">
+                <Border.Background>
+                    <ImageBrush x:Name="playerImage" Stretch="UniformToFill"/>
+                </Border.Background>
+            </Border>
+
+            <!-- Player Name -->
+            <TextBlock x:Name="textPlayerName"
+                       Text="Player Name"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+
+            <!-- Position & Captain Badge -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                <TextBlock x:Name="textPosition"
+                           Text="Position"
+                           FontSize="14"
+                           Foreground="#666"/>
+                <TextBlock x:Name="textCaptain"
+                           Text=" (C)"
+                           FontSize="14"
+                           Foreground="#c0a030"
+                           FontWeight="Bold"
+                           Visibility="Collapsed"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Separator -->
+        <Border Grid.Row="1" Height="2" Background="#ddd" Margin="0,0,0,15"/>
+
+        <!-- Player Stats -->
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Player Information"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,15"/>
+
+            <!-- Shirt Number -->
+            <Grid Margin="0,5">
+                <TextBlock Text="Shirt Number" Style="{StaticResource LabelStyle}"/>
+                <TextBlock x:Name="textShirtNumber" Text="#0" Style="{StaticResource ValueStyle}"/>
+            </Grid>
+
+            <!-- Team -->
+            <Grid Margin="0,5">
+                <TextBlock Text="Team" Style="{StaticResource LabelStyle}"/>
+                <TextBlock x:Name="textTeam" Text="Team" Style="{StaticResource ValueStyle}"/>
+            </Grid>
+
+            <Border Height="1" Background="#eee" Margin="0,15"/>
+
+            <TextBlock Text="Match Statistics"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Margin="0,15,0,15"/>
+
+            <!-- Goals Scored -->
+            <Grid Margin="0,5">
+                <TextBlock Text="Goals Scored" Style="{StaticResource LabelStyle}"/>
+                <TextBlock x:Name="textGoals" Text="0" Style="{StaticResource ValueStyle}"/>
+            </Grid>
+
+            <!-- Yellow Cards -->
+            <Grid Margin="0,5">
+                <TextBlock Text="Yellow Cards" Style="{StaticResource LabelStyle}"/>
+                <TextBlock x:Name="textYellowCards" Text="0" Style="{StaticResource ValueStyle}"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- Close Button -->
+        <Button Grid.Row="3"
+                Content="Close"
+                Padding="20,10"
+                HorizontalAlignment="Center"
+                Click="ButtonClose_Click"
+                IsCancel="True"/>
+    </Grid>
+</Window>

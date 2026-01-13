@@ -361,3 +361,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# ======================
+# Project-specific ignores
+# ======================
+
+# Application runtime settings (user-specific, contains absolute paths)
+settings.json
+
+# Claude Code tool directories
+**/.claude/
+
+# JetBrains IDE (Rider, etc.)
+.idea/
+
+# Project documentation (working files)
+CLAUDE.md
+TODO.md
+DATALAYER_SETUP.md
+IMPLEMENTATION_GUIDE.md
+
+# Project specification PDF (binary - instructors have original)
+*.pdf

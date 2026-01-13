@@ -11,10 +11,7 @@
             {
                 lock (_lock)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = Activator.CreateInstance(typeof(T), true) as T;
-                    }
+                    _instance ??= Activator.CreateInstance(typeof(T), true) as T;
                     if (_instance == null)
                     {
                         throw new InvalidOperationException("Could not create instance of type " + typeof(T).FullName);
